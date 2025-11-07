@@ -1,33 +1,26 @@
 import { API_URL } from "@/config/endpoints";
-import { getTranslations } from "next-intl/server";
 import type { ProductModel } from "@/models";
+import HeroSection from "@/components/home/HeroSection";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import FeaturesSection from "@/components/home/FeaturesSection";
 
 const getFeaturedProducts = async (): Promise<ProductModel[]> => {
   const res = await fetch(`${API_URL}/products`);
   if (!res.ok) return [];
   const data = (await res.json()) as ProductModel[];
-  return data.slice(0, 4);
+  return data.slice(0, 8);
 };
 
 export default async function Home() {
-  const t = await getTranslations("HomePage");
   const featuredProducts = await getFeaturedProducts();
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div>
-        <ul className="mt-4 space-y-4">
-          {featuredProducts.map((p) => (
-            <li key={p.id} className="border rounded p-4 bg-white ">
-              <h2 className="text-lg font-semibold">{p.title}</h2>
-              <p className="text-sm">{p.description}</p>
-              <p className="text-sm mt-2">
-                {p.category} — ${p.price}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="relative flex min-h-screen w-full flex-col">
+      <main className="flex-1 mt-12">
+        <HeroSection />
+        <FeaturedProducts products={featuredProducts} />
+        <FeaturesSection />
+      </main>
     </div>
   );
 }
