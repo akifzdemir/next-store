@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import type { ProductModel } from "@/models";
 import ProductCard from "@/components/home/ProductCard";
 import ProductFilters, { FilterState } from "./ProductFilters";
@@ -11,6 +12,7 @@ interface ProductsGridProps {
 
 export default function ProductsGrid({ products }: ProductsGridProps) {
   const [filters, setFilters] = useState<FilterState>({
+    searchQuery: "",
     category: "all",
     minPrice: 0,
     maxPrice: 1000,
@@ -24,6 +26,11 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
 
   const filteredProducts = useMemo(() => {
     let filtered = [...products];
+
+    if (filters.searchQuery.trim()) {
+      const query = filters.searchQuery.toLowerCase();
+      filtered = filtered.filter((p) => p.title.toLowerCase().includes(query));
+    }
 
     if (filters.category !== "all") {
       filtered = filtered.filter((p) => p.category === filters.category);
@@ -54,37 +61,45 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
   }, [products, filters]);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8">
-      <aside className="lg:w-64 shrink-0">
-        <div className="lg:sticky lg:top-24">
-          <ProductFilters categories={categories} onFilterChange={setFilters} />
-        </div>
-      </aside>
+    <div>
+      <ProductFilters categories={categories} onFilterChange={setFilters} />
 
-      <div className="flex-1">
-        <div className="mb-6">
-          <p className="text-sm text-[#6B7280]">
-            Showing {filteredProducts.length} of {products.length} products
+      <div className="mb-6">
+        <p className="text-sm text-[#6B7280]">
+          Showing {filteredProducts.length} of {products.length} products
+        </p>
+      </div>
+
+      {filteredProducts.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-20">
+          <p className="text-lg font-semibold text-[#333333]">
+            No products found
+          </p>
+          <p className="text-sm text-[#6B7280] mt-2">
+            Try adjusting your filters
           </p>
         </div>
-
-        {filteredProducts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <p className="text-lg font-semibold text-[#333333]">
-              No products found
-            </p>
-            <p className="text-sm text-[#6B7280] mt-2">
-              Try adjusting your filters
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+      ) : (
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
+          <AnimatePresence>
             {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <motion.div
+                key={product.id}
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{
+                  layout: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+                  opacity: { duration: 0.2 },
+                }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
             ))}
-          </div>
-        )}
-      </div>
+          </AnimatePresence>
+        </div>
+      )}
     </div>
   );
 }
