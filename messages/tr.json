@@ -1,5 +1,8 @@
 {
     "HomePage": {
         "title": "Merhaba dünya!"
+    },
+    "ProductsPage": {
+        "title": "Tüm Ürünler"
     }
 }

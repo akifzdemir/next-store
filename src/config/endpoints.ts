@@ -4,6 +4,3 @@ export const products = {
   getAll: `${API_URL}/products`,
   getById: (id: number) => `${API_URL}/products/${id}`,
 };
-export const categories = {
-  getAll: `${API_URL}/products/categories`,
-};
