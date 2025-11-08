@@ -125,6 +125,7 @@
         }
     },
     "Footer": {
+        "description": "Next Store is a collection of premium quality fashion products. Crafted with intention, made to last.",
         "help": {
             "title": "Help",
             "contactUs": "Contact Us",
@@ -150,7 +151,7 @@
             "placeholder": "Your email",
             "signUp": "Sign Up"
         },
-        "copyright": "© 2025 Next Store. All rights reserved."
+        "copyright": "All rights reserved."
     },
     "CartSheet": {
         "title": "Shopping Cart",

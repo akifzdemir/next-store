@@ -2,7 +2,7 @@
     "metadata": {
         "home": {
             "title": "Next Store - Yeni Koleksiyonu Keşfedin",
-            "description": "Modern gardırop için tasarlanmış zamansız parçalar. Niyet ile tasarlandı, uzun ömürlü olması için yapıldı. Next Store'da premium kaliteli moda ürünlerini keşfedin.",
+            "description": "Modern gardırop için tasarlanmış zamansız parçalar. Özenle tasarlandı, uzun ömürlü olması için üretildi. Next Store'da premium kaliteli moda ürünlerini keşfedin.",
             "keywords": "moda, giyim, alışveriş, e-ticaret, next store, premium kalite, modern gardırop"
         },
         "products": {
@@ -24,7 +24,7 @@
         "title": "Merhaba dünya!",
         "hero": {
             "title": "Yeni Koleksiyonu Keşfedin",
-            "subtitle": "Modern gardırop için tasarlanmış zamansız parçalar. Niyet ile tasarlandı, uzun ömürlü olması için yapıldı.",
+            "subtitle": "Modern gardırop için tasarlanmış zamansız parçalar. Özenle tasarlandı, uzun ömürlü olması için üretildi.",
             "shopNow": "Hemen Alışveriş Yap"
         },
         "featuredProducts": {
@@ -125,6 +125,7 @@
         }
     },
     "Footer": {
+        "description": "Next Store, premium kaliteli moda ürünleri koleksiyonudur. Özenle tasarlandı, uzun ömürlü olması için üretildi.",
         "help": {
             "title": "Yardım",
             "contactUs": "Bize Ulaşın",
@@ -150,7 +151,7 @@
             "placeholder": "E-posta adresiniz",
             "signUp": "Kaydol"
         },
-        "copyright": "© 2025 Next Store. Tüm hakları saklıdır."
+        "copyright": "Tüm hakları saklıdır."
     },
     "CartSheet": {
         "title": "Alışveriş Sepeti",

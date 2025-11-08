@@ -3,17 +3,44 @@ import { getTranslations } from "next-intl/server";
 export default async function Footer() {
   const t = await getTranslations("Footer");
   return (
-    <footer className="bg-gray-100 dark:bg-[#0a0a0a]">
+    <footer className="bg-gray-100 dark:bg-[#0a0a0a] border-t border-gray-200 dark:border-gray-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#6B7280] dark:text-gray-400">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+          {/* Logo and Description */}
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-3 mb-4">
+              <svg
+                className="h-8 w-8 text-[#333333] dark:text-[#e5e5e5]"
+                fill="none"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <h2 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+                Next Store
+              </h2>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-md">
+              {t("description")}
+            </p>
+            <p className="mt-6 text-sm text-gray-500 dark:text-gray-500">
+              © {new Date().getFullYear()} Next Store. {t("copyright")}
+            </p>
+          </div>
+
+          {/* Website Links */}
+          <div className="md:col-span-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-gray-100 mb-4">
               {t("help.title")}
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="space-y-3">
               <li>
                 <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline transition-colors"
                   href="#"
                 >
                   {t("help.contactUs")}
@@ -21,7 +48,7 @@ export default async function Footer() {
               </li>
               <li>
                 <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline transition-colors"
                   href="#"
                 >
                   {t("help.faq")}
@@ -29,7 +56,7 @@ export default async function Footer() {
               </li>
               <li>
                 <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline transition-colors"
                   href="#"
                 >
                   {t("help.shippingReturns")}
@@ -37,7 +64,7 @@ export default async function Footer() {
               </li>
               <li>
                 <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline transition-colors"
                   href="#"
                 >
                   {t("help.sizeGuide")}
@@ -45,14 +72,16 @@ export default async function Footer() {
               </li>
             </ul>
           </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#6B7280] dark:text-gray-400">
+
+          {/* Legal Links */}
+          <div className="md:col-span-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-gray-100 mb-4">
               {t("company.title")}
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="space-y-3">
               <li>
                 <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline transition-colors"
                   href="#"
                 >
                   {t("company.aboutUs")}
@@ -60,7 +89,7 @@ export default async function Footer() {
               </li>
               <li>
                 <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline transition-colors"
                   href="#"
                 >
                   {t("company.careers")}
@@ -68,69 +97,22 @@ export default async function Footer() {
               </li>
               <li>
                 <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline transition-colors"
                   href="#"
                 >
                   {t("company.press")}
                 </a>
               </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#6B7280] dark:text-gray-400">
-              {t("social.title")}
-            </h3>
-            <ul className="mt-4 space-y-3">
               <li>
                 <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline transition-colors"
                   href="#"
                 >
                   {t("social.instagram")}
                 </a>
               </li>
-              <li>
-                <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
-                  href="#"
-                >
-                  {t("social.facebook")}
-                </a>
-              </li>
-              <li>
-                <a
-                  className="text-base text-gray-900 dark:text-gray-300 hover:underline"
-                  href="#"
-                >
-                  {t("social.twitter")}
-                </a>
-              </li>
             </ul>
           </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#6B7280] dark:text-gray-400">
-              {t("newsletter.title")}
-            </h3>
-            <p className="mt-4 text-base text-gray-900 dark:text-gray-300">
-              {t("newsletter.description")}
-            </p>
-            <form className="mt-4 flex gap-2">
-              <input
-                className="flex-1 rounded-md border-gray-300 dark:border-gray-600 bg-[#F9F9F9] dark:bg-gray-800 dark:text-gray-100 focus:border-[#3B82F6] focus:ring-[#3B82F6]"
-                placeholder={t("newsletter.placeholder")}
-                type="email"
-              />
-              <button
-                className="rounded-md bg-[#3B82F6] px-4 py-2 text-white font-semibold hover:bg-blue-700"
-                type="submit"
-              >
-                {t("newsletter.signUp")}
-              </button>
-            </form>
-          </div>
-        </div>
-        <div className="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm text-[#6B7280] dark:text-gray-400">
-          <p>{t("copyright")}</p>
         </div>
       </div>
     </footer>
