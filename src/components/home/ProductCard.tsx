@@ -43,7 +43,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       href={createProductUrl(product.id, product.title, locale as string)}
       className="group relative flex flex-col gap-3 cursor-pointer"
     >
-      <div className="relative aspect-3/4 w-full overflow-hidden rounded-lg bg-gray-200">
+      <div className="relative aspect-3/4 w-full overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800">
         <Image
           className="object-contain object-center p-12"
           alt={product.title}
@@ -55,16 +55,18 @@ export default function ProductCard({ product }: ProductCardProps) {
           onClick={handleAddToCart}
           variant="icon"
           size="icon"
-          className="absolute bottom-3 right-3 bg-white shadow-md opacity-0 transition-opacity group-hover:opacity-100 hover:shadow-lg hover:bg-white"
+          className="absolute bottom-3 right-3 bg-white dark:bg-gray-800 shadow-md opacity-0 transition-opacity group-hover:opacity-100 hover:shadow-lg hover:bg-white dark:hover:bg-gray-700"
         >
           <ShoppingCart className="h-5 w-5" />
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <h3 className="text-base font-semibold line-clamp-1">
+        <h3 className="text-base font-semibold line-clamp-1 text-gray-900 dark:text-gray-100">
           {product.title}
         </h3>
-        <p className="text-sm text-[#6B7280]">${product.price}</p>
+        <p className="text-sm text-[#6B7280] dark:text-gray-400">
+          ${product.price}
+        </p>
       </div>
     </Link>
   );

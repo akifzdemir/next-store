@@ -9,6 +9,7 @@ import StoreProvider from "@/components/StoreProvider";
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { ThemeProvider } from "next-themes";
 
 const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
@@ -58,17 +59,19 @@ export default async function RootLayout({
     notFound();
   }
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${manrope.variable} font-sans antialiased bg-[#F9F9F9] text-[#333333]`}
+        className={`${manrope.variable} font-sans antialiased bg-[#F9F9F9] text-[#333333] dark:bg-[#1a1a1a] dark:text-[#e5e5e5]`}
       >
         <NextIntlClientProvider>
-          <StoreProvider>
-            <Header />
-            {children}
-            <Toaster />
-            <Footer />
-          </StoreProvider>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <StoreProvider>
+              <Header />
+              {children}
+              <Toaster />
+              <Footer />
+            </StoreProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 export default async function HeroSection() {
   const t = await getTranslations("HomePage.hero");
@@ -24,9 +25,15 @@ export default async function HeroSection() {
           <h2 className="max-w-xl text-lg font-normal text-gray-200">
             {t("subtitle")}
           </h2>
-          <Button variant="primary" size="lg" className="mt-4 hover:scale-105">
-            {t("shopNow")}
-          </Button>
+          <Link href="/products">
+            <Button
+              variant="primary"
+              size="lg"
+              className="mt-4 hover:scale-105"
+            >
+              {t("shopNow")}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

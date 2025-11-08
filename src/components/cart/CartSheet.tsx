@@ -49,13 +49,13 @@ export default function CartSheet() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed right-0 top-0 z-50 h-full w-full max-w-md bg-white shadow-2xl"
+            className="fixed right-0 top-0 z-50 h-full w-full max-w-md bg-white dark:bg-[#1a1a1a] shadow-2xl"
           >
             <div className="flex h-full flex-col">
-              <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
+              <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-6 py-4">
                 <div className="flex items-center gap-3">
-                  <ShoppingBag className="h-6 w-6 text-gray-900" />
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <ShoppingBag className="h-6 w-6 text-gray-900 dark:text-gray-100" />
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                     {t("title")}
                   </h2>
                 </div>
@@ -63,7 +63,7 @@ export default function CartSheet() {
                   variant="icon"
                   size="icon"
                   onClick={handleClose}
-                  className="hover:bg-gray-100"
+                  className="hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
                   <X className="h-5 w-5" />
                 </Button>
@@ -71,11 +71,11 @@ export default function CartSheet() {
 
               {items.length === 0 ? (
                 <div className="flex flex-1 flex-col items-center justify-center px-6">
-                  <ShoppingBag className="h-16 w-16 text-gray-300 mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <ShoppingBag className="h-16 w-16 text-gray-300 dark:text-gray-600 mb-4" />
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                     {t("emptyCart.title")}
                   </h3>
-                  <p className="text-sm text-gray-500 text-center mb-6">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-6">
                     {t("emptyCart.description")}
                   </p>
                   <Button variant="primary" size="md" onClick={handleClose}>
@@ -93,9 +93,9 @@ export default function CartSheet() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, x: -100 }}
                           transition={{ delay: index * 0.05 }}
-                          className="flex gap-3 py-3 border-b border-gray-100 last:border-0"
+                          className="flex gap-3 py-3 border-b border-gray-100 dark:border-gray-800 last:border-0"
                         >
-                          <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded bg-gray-50">
+                          <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded bg-gray-50 dark:bg-gray-800">
                             <Image
                               src={item.product.image}
                               alt={item.product.title}
@@ -114,12 +114,12 @@ export default function CartSheet() {
                                     locale as string
                                   )}
                                   onClick={handleClose}
-                                  className="text-sm font-medium text-gray-900 line-clamp-1 hover:text-blue-600 transition-colors"
+                                  className="text-sm font-medium text-gray-900 dark:text-gray-100 line-clamp-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                                 >
                                   {item.product.title}
                                 </Link>
                                 {(item.selectedColor || item.selectedSize) && (
-                                  <p className="text-xs text-gray-500 mt-0.5">
+                                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                                     {[item.selectedColor, item.selectedSize]
                                       .filter(Boolean)
                                       .join(" • ")}
@@ -158,11 +158,11 @@ export default function CartSheet() {
                                     )
                                   }
                                   disabled={item.quantity <= 1}
-                                  className="h-6 w-6 flex items-center justify-center text-gray-500 hover:text-gray-900 disabled:opacity-30 disabled:cursor-not-allowed"
+                                  className="h-6 w-6 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
                                 >
                                   -
                                 </button>
-                                <span className="text-sm font-medium text-gray-900 w-6 text-center">
+                                <span className="text-sm font-medium text-gray-900 dark:text-gray-100 w-6 text-center">
                                   {item.quantity}
                                 </span>
                                 <button
@@ -176,13 +176,13 @@ export default function CartSheet() {
                                       })
                                     )
                                   }
-                                  className="h-6 w-6 flex items-center justify-center text-gray-500 hover:text-gray-900"
+                                  className="h-6 w-6 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
                                 >
                                   +
                                 </button>
                               </div>
 
-                              <span className="text-sm font-semibold text-gray-900">
+                              <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                                 $
                                 {(item.product.price * item.quantity).toFixed(
                                   2
@@ -195,14 +195,14 @@ export default function CartSheet() {
                     </div>
                   </div>
 
-                  <div className="border-t border-gray-200 px-6 py-4">
+                  <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-4">
                     <div className="mb-4 flex items-center justify-between">
-                      <span className="text-sm font-medium text-gray-600">
+                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                         {t("total")} (
                         {items.reduce((sum, item) => sum + item.quantity, 0)}{" "}
                         {t("items")})
                       </span>
-                      <span className="text-xl font-bold text-gray-900">
+                      <span className="text-xl font-bold text-gray-900 dark:text-gray-100">
                         ${total.toFixed(2)}
                       </span>
                     </div>

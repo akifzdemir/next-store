@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import ThemeSwitcher from "../ui/ThemeSwitcher";
 
 export default function Header() {
   const t = useTranslations("Header.nav");
@@ -39,12 +40,12 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-gray-200/50 bg-[#F9F9F9]/80 backdrop-blur-sm">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-700/50 bg-[#F9F9F9]/80 dark:bg-[#1a1a1a]/80 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href={"/"} className="flex items-center gap-4">
               <svg
-                className="h-6 w-6 text-[#333333]"
+                className="h-6 w-6 text-[#333333] dark:text-[#e5e5e5]"
                 fill="none"
                 viewBox="0 0 48 48"
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,29 +55,31 @@ export default function Header() {
                   fill="currentColor"
                 ></path>
               </svg>
-              <h2 className="text-xl font-bold tracking-tight">Next Store</h2>
+              <h2 className="text-xl font-bold tracking-tight text-[#333333] dark:text-[#e5e5e5]">
+                Next Store
+              </h2>
             </Link>
             <nav className="hidden items-center gap-8 md:flex">
               <a
-                className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
+                className="text-sm font-medium text-[#6B7280] hover:text-[#333333] dark:text-gray-400 dark:hover:text-[#e5e5e5] transition-colors"
                 href="#"
               >
                 {t("newArrivals")}
               </a>
               <a
-                className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
+                className="text-sm font-medium text-[#6B7280] hover:text-[#333333] dark:text-gray-400 dark:hover:text-[#e5e5e5] transition-colors"
                 href="#"
               >
                 {t("women")}
               </a>
               <a
-                className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
+                className="text-sm font-medium text-[#6B7280] hover:text-[#333333] dark:text-gray-400 dark:hover:text-[#e5e5e5] transition-colors"
                 href="#"
               >
                 {t("men")}
               </a>
               <a
-                className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
+                className="text-sm font-medium text-[#6B7280] hover:text-[#333333] dark:text-gray-400 dark:hover:text-[#e5e5e5] transition-colors"
                 href="#"
               >
                 {t("accessories")}
@@ -89,6 +92,8 @@ export default function Header() {
               <Button variant="icon" size="icon">
                 <User className="h-5 w-5" />
               </Button>
+
+              <ThemeSwitcher />
 
               <div className="relative">
                 <Button
@@ -105,15 +110,15 @@ export default function Header() {
                       className="fixed inset-0 z-40"
                       onClick={() => setIsLangOpen(false)}
                     />
-                    <div className="absolute right-0 top-12 z-50 w-40 rounded-lg border border-gray-200 bg-white shadow-lg py-2">
+                    <div className="absolute right-0 top-12 z-50 w-40 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#2a2a2a] shadow-lg py-2">
                       {languages.map((lang) => (
                         <button
                           key={lang.code}
                           onClick={() => changeLanguage(lang.code)}
-                          className={`w-full px-4 cursor-pointer py-2 text-left text-sm hover:bg-gray-100 transition-colors flex items-center gap-2 ${
+                          className={`w-full px-4 cursor-pointer py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 ${
                             currentLocale === lang.code
-                              ? "bg-blue-50 text-blue-600 font-medium"
-                              : "text-gray-700"
+                              ? "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium"
+                              : "text-gray-700 dark:text-gray-300"
                           }`}
                         >
                           <span>{lang.label}</span>

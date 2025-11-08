@@ -67,7 +67,7 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
       <ProductFilters categories={categories} onFilterChange={setFilters} />
 
       <div className="mb-6">
-        <p className="text-sm text-[#6B7280]">
+        <p className="text-sm text-[#6B7280] dark:text-gray-400">
           {t("showing", {
             count: filteredProducts.length,
             total: products.length,
@@ -77,10 +77,10 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
 
       {filteredProducts.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20">
-          <p className="text-lg font-semibold text-[#333333]">
+          <p className="text-lg font-semibold text-[#333333] dark:text-gray-100">
             {t("noProductsFound")}
           </p>
-          <p className="text-sm text-[#6B7280] mt-2">
+          <p className="text-sm text-[#6B7280] dark:text-gray-400 mt-2">
             {t("tryAdjustingFilters")}
           </p>
         </div>

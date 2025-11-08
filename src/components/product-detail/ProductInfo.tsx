@@ -52,11 +52,11 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl lg:text-4xl font-black tracking-tighter text-gray-900">
+        <h1 className="text-3xl lg:text-4xl font-black tracking-tighter text-gray-900 dark:text-gray-100">
           {product.title}
         </h1>
         <div className="flex items-center gap-3">
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
             ${product.price.toFixed(2)}
           </p>
         </div>
@@ -68,49 +68,45 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                 className={`h-4 w-4 ${
                   i < Math.floor(product.rating.rate)
                     ? "fill-yellow-400 text-yellow-400"
-                    : "fill-gray-200 text-gray-200"
+                    : "fill-gray-200 text-gray-200 dark:fill-gray-700 dark:text-gray-700"
                 }`}
               />
             ))}
           </div>
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-gray-600 dark:text-gray-400">
             {product.rating.rate.toFixed(1)}
           </span>
           <span className="text-sm text-gray-400">•</span>
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-gray-600 dark:text-gray-400">
             {t("rating.reviews", { count: product.rating.count })}
           </span>
         </div>
       </div>
 
-      <p className="text-base font-normal leading-relaxed text-gray-500">
+      <p className="text-base font-normal leading-relaxed text-gray-500 dark:text-gray-400">
         {product.description}
       </p>
 
-      <hr className="border-gray-200" />
+      <hr className="border-gray-200 dark:border-gray-700" />
 
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
-          <p className="text-sm font-bold text-gray-900">
+          <p className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {t("color")}:{" "}
-            <span className="font-medium text-gray-500">
+            <span className="font-medium text-gray-500 dark:text-gray-400">
               {t(`colors.${colors[selectedColor].name}`)}
             </span>
           </p>
           <div className="flex items-center gap-3">
             {colors.map((color, index) => (
-              <Button
+              <button
                 key={color.name}
                 onClick={() => setSelectedColor(index)}
                 aria-label={`Select color ${t(`colors.${color.name}`)}`}
-                variant="ghost"
-                size="icon"
-                className={`size-8 rounded-full transition-all ${
-                  color.value
-                } hover:bg-transparent ${
+                className={`size-8 rounded-full transition-all ${color.value} ${
                   selectedColor === index
-                    ? "ring-2 ring-offset-2 ring-blue-500 ring-offset-white"
-                    : "hover:ring-2 hover:ring-offset-2 hover:ring-blue-500/50 ring-offset-white"
+                    ? "ring-2 ring-offset-2 ring-blue-500 dark:ring-blue-400 ring-offset-white dark:ring-offset-gray-900"
+                    : "hover:ring-2 hover:ring-offset-2 hover:ring-blue-500/50 dark:hover:ring-blue-400/50 ring-offset-white dark:ring-offset-gray-900"
                 }`}
               />
             ))}
@@ -118,7 +114,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </div>
 
         <div className="flex flex-col gap-3">
-          <p className="text-sm font-bold text-gray-900">{t("size")}</p>
+          <p className="text-sm font-bold text-gray-900 dark:text-gray-100">
+            {t("size")}
+          </p>
           <div className="grid grid-cols-3 gap-3">
             {sizes.map((size, index) => (
               <Button
@@ -128,8 +126,8 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                 size="md"
                 className={`p-3 ${
                   selectedSize === index
-                    ? "bg-blue-50 text-blue-600 ring-1 ring-inset ring-blue-600 hover:bg-blue-50"
-                    : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                    ? "bg-blue-50 text-blue-600 dark:text-blue-400 ring-1 ring-inset ring-blue-600 dark:ring-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30"
+                    : "bg-gray-100 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
                 }`}
               >
                 {t(`sizes.${size}`)}
@@ -138,26 +136,26 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </div>
         </div>
       </div>
-      <hr className="border-gray-200" />
+      <hr className="border-gray-200 dark:border-gray-700" />
 
       <div className="flex flex-col sm:flex-row gap-4">
-        <div className="flex items-center justify-between rounded-lg bg-gray-100 px-3">
+        <div className="flex items-center justify-between rounded-lg bg-gray-100 dark:bg-gray-800 px-3">
           <Button
             onClick={() => handleQuantityChange(-1)}
-            variant="ghost"
+            variant="icon"
             size="icon"
-            className="bg-transparent hover:bg-transparent hover:text-gray-900"
+            className="bg-transparent dark:bg-transparent hover:bg-transparent hover:text-gray-900 dark:hover:text-gray-100"
           >
             <Minus className="h-4 w-4" />
           </Button>
-          <span className="text-base font-bold w-8 text-center text-gray-900">
+          <span className="text-base font-bold w-8 text-center text-gray-900 dark:text-gray-100">
             {quantity}
           </span>
           <Button
             onClick={() => handleQuantityChange(1)}
-            variant="ghost"
+            variant="icon"
             size="icon"
-            className="bg-transparent hover:bg-transparent hover:text-gray-900"
+            className="bg-transparent dark:bg-transparent hover:bg-transparent hover:text-gray-900 dark:hover:text-gray-100"
           >
             <Plus className="h-4 w-4" />
           </Button>
