@@ -1,8 +1,141 @@
 {
     "HomePage": {
-        "title": "Merhaba dünya!"
+        "title": "Merhaba dünya!",
+        "hero": {
+            "title": "Yeni Koleksiyonu Keşfedin",
+            "subtitle": "Modern gardırop için tasarlanmış zamansız parçalar. Niyet ile tasarlandı, uzun ömürlü olması için yapıldı.",
+            "shopNow": "Hemen Alışveriş Yap"
+        },
+        "featuredProducts": {
+            "title": "Öne Çıkan Ürünler",
+            "showAll": "Tüm Ürünleri Göster"
+        },
+        "features": {
+            "freeShipping": {
+                "title": "Ücretsiz Kargo",
+                "description": "100 TL üzeri tüm siparişlerde"
+            },
+            "easyReturns": {
+                "title": "Kolay İade",
+                "description": "30 günlük iade politikası"
+            },
+            "sustainable": {
+                "title": "Sürdürülebilir Malzemeler",
+                "description": "Gezegeni düşünerek üretildi"
+            }
+        },
+        "product": {
+            "addedToCart": "Sepete eklendi"
+        }
     },
     "ProductsPage": {
-        "title": "Tüm Ürünler"
+        "title": "Tüm Ürünler",
+        "subtitle": "Tüm ürün koleksiyonumuza göz atın",
+        "showing": "{total} üründen {count} tanesi gösteriliyor",
+        "noProductsFound": "Ürün bulunamadı",
+        "tryAdjustingFilters": "Filtreleri ayarlamayı deneyin",
+        "filters": {
+            "search": "Ara",
+            "searchPlaceholder": "Ürün ara...",
+            "category": "Kategori",
+            "allCategories": "Tüm Kategoriler",
+            "sortBy": "Sıralama",
+            "sortDefault": "Varsayılan",
+            "sortPriceAsc": "Fiyat: Düşükten Yükseğe",
+            "sortPriceDesc": "Fiyat: Yüksekten Düşüğe",
+            "sortNameAsc": "İsim: A'dan Z'ye",
+            "sortNameDesc": "İsim: Z'den A'ya",
+            "priceRange": "Fiyat Aralığı",
+            "minPrice": "Min Fiyat",
+            "maxPrice": "Max Fiyat"
+        }
+    },
+    "ProductDetailPage": {
+        "breadcrumbs": {
+            "home": "Ana Sayfa"
+        },
+        "color": "Renk",
+        "size": "Beden",
+        "addToCart": "Sepete Ekle",
+        "addedToCart": "{count} ürün sepete eklendi",
+        "addedToCart_other": "{count} ürün sepete eklendi",
+        "sizes": {
+            "small": "Küçük",
+            "medium": "Orta",
+            "large": "Büyük"
+        },
+        "colors": {
+            "white": "Beyaz",
+            "lavender": "Lavanta",
+            "sageGreen": "Nane Yeşili",
+            "charcoal": "Kömür Grisi"
+        }
+    },
+    "CartPage": {
+        "breadcrumbs": {
+            "home": "Ana Sayfa",
+            "cart": "Sepet"
+        },
+        "title": "Alışveriş Sepetiniz",
+        "emptyCart": {
+            "title": "Sepetiniz boş",
+            "description": "Başlamak için ürün ekleyin",
+            "continueShopping": "Alışverişe Devam Et"
+        },
+        "orderSummary": {
+            "title": "Sipariş Özeti",
+            "subtotal": "Ara Toplam",
+            "shipping": "Tahmini Kargo",
+            "total": "Toplam",
+            "checkout": "Ödemeye Geç"
+        },
+        "continueShopping": "Alışverişe Devam Et"
+    },
+    "Header": {
+        "nav": {
+            "newArrivals": "Yeni Gelenler",
+            "women": "Kadın",
+            "men": "Erkek",
+            "accessories": "Aksesuarlar"
+        }
+    },
+    "Footer": {
+        "help": {
+            "title": "Yardım",
+            "contactUs": "Bize Ulaşın",
+            "faq": "SSS",
+            "shippingReturns": "Kargo & İade",
+            "sizeGuide": "Beden Rehberi"
+        },
+        "company": {
+            "title": "Şirket",
+            "aboutUs": "Hakkımızda",
+            "careers": "Kariyer",
+            "press": "Basın"
+        },
+        "social": {
+            "title": "Sosyal Medya",
+            "instagram": "Instagram",
+            "facebook": "Facebook",
+            "twitter": "Twitter"
+        },
+        "newsletter": {
+            "title": "Bülten",
+            "description": "En son güncellemeler için bültenimize kaydolun.",
+            "placeholder": "E-posta adresiniz",
+            "signUp": "Kaydol"
+        },
+        "copyright": "© 2025 Next Store. Tüm hakları saklıdır."
+    },
+    "CartSheet": {
+        "title": "Alışveriş Sepeti",
+        "emptyCart": {
+            "title": "Sepetiniz boş",
+            "description": "Sepetinize ürün ekleyin",
+            "continueShopping": "Alışverişe Devam Et"
+        },
+        "total": "Toplam",
+        "items": "ürün",
+        "viewCart": "Sepeti Görüntüle"
     }
 }

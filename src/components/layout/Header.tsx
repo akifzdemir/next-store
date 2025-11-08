@@ -6,8 +6,10 @@ import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { toggleCartSheet } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
 import CartSheet from "@/components/cart/CartSheet";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
+  const t = useTranslations("Header.nav");
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -40,25 +42,25 @@ export default function Header() {
                 className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
                 href="#"
               >
-                New Arrivals
+                {t("newArrivals")}
               </a>
               <a
                 className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
                 href="#"
               >
-                Women
+                {t("women")}
               </a>
               <a
                 className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
                 href="#"
               >
-                Men
+                {t("men")}
               </a>
               <a
                 className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
                 href="#"
               >
-                Accessories
+                {t("accessories")}
               </a>
             </nav>
             <div className="flex items-center gap-3">

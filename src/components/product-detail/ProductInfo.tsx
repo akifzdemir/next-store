@@ -7,21 +7,23 @@ import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface ProductInfoProps {
   product: ProductModel;
 }
 
 const colors = [
-  { name: "White", value: "bg-gray-100" },
-  { name: "Lavender", value: "bg-purple-200" },
-  { name: "Sage Green", value: "bg-green-200" },
-  { name: "Charcoal", value: "bg-gray-700" },
+  { name: "white", value: "bg-gray-100" },
+  { name: "lavender", value: "bg-purple-200" },
+  { name: "sageGreen", value: "bg-green-200" },
+  { name: "charcoal", value: "bg-gray-700" },
 ];
 
-const sizes = ["Small", "Medium", "Large"];
+const sizes = ["small", "medium", "large"];
 
 export default function ProductInfo({ product }: ProductInfoProps) {
+  const t = useTranslations("ProductDetailPage");
   const dispatch = useAppDispatch();
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(1);
@@ -36,11 +38,11 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       addToCart({
         product,
         quantity,
-        selectedColor: colors[selectedColor].name,
-        selectedSize: sizes[selectedSize],
+        selectedColor: t(`colors.${colors[selectedColor].name}`),
+        selectedSize: t(`sizes.${sizes[selectedSize]}`),
       })
     );
-    toast.success(`${quantity} item${quantity > 1 ? "s" : ""} added to cart`, {
+    toast.success(t("addedToCart", { count: quantity }), {
       description: product.title,
       duration: 3000,
     });
@@ -67,9 +69,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
           <p className="text-sm font-bold text-gray-900">
-            Color:{" "}
+            {t("color")}:{" "}
             <span className="font-medium text-gray-500">
-              {colors[selectedColor].name}
+              {t(`colors.${colors[selectedColor].name}`)}
             </span>
           </p>
           <div className="flex items-center gap-3">
@@ -77,7 +79,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
               <Button
                 key={color.name}
                 onClick={() => setSelectedColor(index)}
-                aria-label={`Select color ${color.name}`}
+                aria-label={`Select color ${t(`colors.${color.name}`)}`}
                 variant="ghost"
                 size="icon"
                 className={`size-8 rounded-full transition-all ${
@@ -93,7 +95,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </div>
 
         <div className="flex flex-col gap-3">
-          <p className="text-sm font-bold text-gray-900">Size</p>
+          <p className="text-sm font-bold text-gray-900">{t("size")}</p>
           <div className="grid grid-cols-3 gap-3">
             {sizes.map((size, index) => (
               <Button
@@ -107,7 +109,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                     : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                 }`}
               >
-                {size}
+                {t(`sizes.${size}`)}
               </Button>
             ))}
           </div>
@@ -145,7 +147,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           className="flex-1 max-w-[480px] gap-2 min-w-0"
         >
           <ShoppingCart className="h-5 w-5" />
-          <span>Add to Cart</span>
+          <span>{t("addToCart")}</span>
         </Button>
       </div>
     </div>

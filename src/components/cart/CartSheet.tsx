@@ -12,8 +12,10 @@ import {
 } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function CartSheet() {
+  const t = useTranslations("CartSheet");
   const params = useParams();
   const locale = params.locale || "en";
   const dispatch = useAppDispatch();
@@ -53,7 +55,7 @@ export default function CartSheet() {
                 <div className="flex items-center gap-3">
                   <ShoppingBag className="h-6 w-6 text-gray-900" />
                   <h2 className="text-xl font-bold text-gray-900">
-                    Shopping Cart
+                    {t("title")}
                   </h2>
                 </div>
                 <Button
@@ -70,13 +72,13 @@ export default function CartSheet() {
                 <div className="flex flex-1 flex-col items-center justify-center px-6">
                   <ShoppingBag className="h-16 w-16 text-gray-300 mb-4" />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Your cart is empty
+                    {t("emptyCart.title")}
                   </h3>
                   <p className="text-sm text-gray-500 text-center mb-6">
-                    Add items to your cart to see them here
+                    {t("emptyCart.description")}
                   </p>
                   <Button variant="primary" size="md" onClick={handleClose}>
-                    Continue Shopping
+                    {t("emptyCart.continueShopping")}
                   </Button>
                 </div>
               ) : (
@@ -187,9 +189,9 @@ export default function CartSheet() {
                   <div className="border-t border-gray-200 px-6 py-4">
                     <div className="mb-4 flex items-center justify-between">
                       <span className="text-sm font-medium text-gray-600">
-                        Total (
+                        {t("total")} (
                         {items.reduce((sum, item) => sum + item.quantity, 0)}{" "}
-                        items)
+                        {t("items")})
                       </span>
                       <span className="text-xl font-bold text-gray-900">
                         ${total.toFixed(2)}
@@ -197,7 +199,7 @@ export default function CartSheet() {
                     </div>
                     <Link href={`/${locale}/cart`} onClick={handleClose}>
                       <Button variant="primary" size="lg" className="w-full">
-                        View Cart
+                        {t("viewCart")}
                       </Button>
                     </Link>
                   </div>

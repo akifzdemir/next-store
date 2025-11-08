@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface ProductFiltersProps {
   categories: string[];
@@ -20,6 +21,7 @@ export default function ProductFilters({
   categories,
   onFilterChange,
 }: ProductFiltersProps) {
+  const t = useTranslations("ProductsPage.filters");
   const [isPriceOpen, setIsPriceOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>({
     searchQuery: "",
@@ -43,13 +45,13 @@ export default function ProductFilters({
       <div className="flex flex-col lg:flex-row gap-4 items-end justify-between">
         <div className="w-full lg:w-96">
           <label className="block text-sm font-semibold text-[#333333] mb-2">
-            Search
+            {t("search")}
           </label>
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder={t("searchPlaceholder")}
               value={filters.searchQuery}
               onChange={(e) =>
                 handleFilterChange("searchQuery", e.target.value)
@@ -62,14 +64,14 @@ export default function ProductFilters({
         <div className="flex flex-wrap gap-4 items-end">
           <div className="w-40">
             <label className="block text-sm font-semibold text-[#333333] mb-2">
-              Category
+              {t("category")}
             </label>
             <select
               value={filters.category}
               onChange={(e) => handleFilterChange("category", e.target.value)}
               className="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 pr-10 text-sm focus:border-[#3B82F6] focus:outline-none focus:ring-2 focus:ring-[#3B82F6]/20 appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMUw2IDZMMTEgMSIgc3Ryb2tlPSIjNkI3MjgwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==')] bg-size-[12px] bg-position-[center_right_1rem] bg-no-repeat"
             >
-              <option value="all">All Categories</option>
+              <option value="all">{t("allCategories")}</option>
               {categories.map((cat) => (
                 <option key={cat} value={cat}>
                   {cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -80,24 +82,24 @@ export default function ProductFilters({
 
           <div className="w-48">
             <label className="block text-sm font-semibold text-[#333333] mb-2">
-              Sort By
+              {t("sortBy")}
             </label>
             <select
               value={filters.sortBy}
               onChange={(e) => handleFilterChange("sortBy", e.target.value)}
               className="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 pr-10 text-sm focus:border-[#3B82F6] focus:outline-none focus:ring-2 focus:ring-[#3B82F6]/20 appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMUw2IDZMMTEgMSIgc3Ryb2tlPSIjNkI3MjgwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==')] bg-size-[12px] bg-position-[center_right_1rem] bg-no-repeat"
             >
-              <option value="default">Default</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="name-asc">Name: A to Z</option>
-              <option value="name-desc">Name: Z to A</option>
+              <option value="default">{t("sortDefault")}</option>
+              <option value="price-asc">{t("sortPriceAsc")}</option>
+              <option value="price-desc">{t("sortPriceDesc")}</option>
+              <option value="name-asc">{t("sortNameAsc")}</option>
+              <option value="name-desc">{t("sortNameDesc")}</option>
             </select>
           </div>
 
           <div className="relative">
             <label className="block text-sm font-semibold text-[#333333] mb-2">
-              Price Range
+              {t("priceRange")}
             </label>
             <button
               onClick={() => setIsPriceOpen(!isPriceOpen)}
@@ -116,7 +118,7 @@ export default function ProductFilters({
                 <div className="absolute right-0 top-full mt-2 z-20 w-80 rounded-xl border border-gray-200 bg-white p-6 shadow-lg">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-sm font-semibold text-[#333333]">
-                      Price Range
+                      {t("priceRange")}
                     </h3>
                     <button
                       onClick={() => setIsPriceOpen(false)}
@@ -129,7 +131,7 @@ export default function ProductFilters({
                   <div className="space-y-6">
                     <div>
                       <div className="flex justify-between text-xs text-[#6B7280] mb-2">
-                        <span>Min Price</span>
+                        <span>{t("minPrice")}</span>
                         <span className="font-medium text-[#333333]">
                           ${filters.minPrice}
                         </span>
@@ -149,7 +151,7 @@ export default function ProductFilters({
 
                     <div>
                       <div className="flex justify-between text-xs text-[#6B7280] mb-2">
-                        <span>Max Price</span>
+                        <span>{t("maxPrice")}</span>
                         <span className="font-medium text-[#333333]">
                           ${filters.maxPrice}
                         </span>

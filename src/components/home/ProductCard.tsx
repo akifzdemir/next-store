@@ -10,6 +10,7 @@ import { addToCart } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
 import { createProductUrl } from "@/lib/url";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -19,6 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const params = useParams();
   const locale = params.locale || "en";
   const dispatch = useAppDispatch();
+  const t = useTranslations("HomePage.product");
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -30,7 +32,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         selectedSize: "Medium",
       })
     );
-    toast.success("Added to cart", {
+    toast.success(t("addedToCart"), {
       description: product.title,
       duration: 3000,
     });

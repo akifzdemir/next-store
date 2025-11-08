@@ -1,8 +1,141 @@
 {
     "HomePage": {
-        "title": "Hello world!"
+        "title": "Hello world!",
+        "hero": {
+            "title": "Discover The New Collection",
+            "subtitle": "Timeless pieces designed for the modern wardrobe. Crafted with intention, made to last.",
+            "shopNow": "Shop Now"
+        },
+        "featuredProducts": {
+            "title": "Featured Products",
+            "showAll": "Show All Products"
+        },
+        "features": {
+            "freeShipping": {
+                "title": "Free Shipping",
+                "description": "On all orders over $100"
+            },
+            "easyReturns": {
+                "title": "Easy Returns",
+                "description": "30-day return policy"
+            },
+            "sustainable": {
+                "title": "Sustainable Materials",
+                "description": "Crafted with the planet in mind"
+            }
+        },
+        "product": {
+            "addedToCart": "Added to cart"
+        }
     },
     "ProductsPage": {
-        "title": "All Products"
+        "title": "All Products",
+        "subtitle": "Browse our complete collection of products",
+        "showing": "Showing {count} of {total} products",
+        "noProductsFound": "No products found",
+        "tryAdjustingFilters": "Try adjusting your filters",
+        "filters": {
+            "search": "Search",
+            "searchPlaceholder": "Search products...",
+            "category": "Category",
+            "allCategories": "All Categories",
+            "sortBy": "Sort By",
+            "sortDefault": "Default",
+            "sortPriceAsc": "Price: Low to High",
+            "sortPriceDesc": "Price: High to Low",
+            "sortNameAsc": "Name: A to Z",
+            "sortNameDesc": "Name: Z to A",
+            "priceRange": "Price Range",
+            "minPrice": "Min Price",
+            "maxPrice": "Max Price"
+        }
+    },
+    "ProductDetailPage": {
+        "breadcrumbs": {
+            "home": "Home"
+        },
+        "color": "Color",
+        "size": "Size",
+        "addToCart": "Add to Cart",
+        "addedToCart": "{count} item added to cart",
+        "addedToCart_other": "{count} items added to cart",
+        "sizes": {
+            "small": "Small",
+            "medium": "Medium",
+            "large": "Large"
+        },
+        "colors": {
+            "white": "White",
+            "lavender": "Lavender",
+            "sageGreen": "Sage Green",
+            "charcoal": "Charcoal"
+        }
+    },
+    "CartPage": {
+        "breadcrumbs": {
+            "home": "Home",
+            "cart": "Cart"
+        },
+        "title": "Your Shopping Cart",
+        "emptyCart": {
+            "title": "Your cart is empty",
+            "description": "Add items to get started",
+            "continueShopping": "Continue Shopping"
+        },
+        "orderSummary": {
+            "title": "Order Summary",
+            "subtotal": "Subtotal",
+            "shipping": "Estimated Shipping",
+            "total": "Total",
+            "checkout": "Proceed to Checkout"
+        },
+        "continueShopping": "Continue Shopping"
+    },
+    "Header": {
+        "nav": {
+            "newArrivals": "New Arrivals",
+            "women": "Women",
+            "men": "Men",
+            "accessories": "Accessories"
+        }
+    },
+    "Footer": {
+        "help": {
+            "title": "Help",
+            "contactUs": "Contact Us",
+            "faq": "FAQ",
+            "shippingReturns": "Shipping & Returns",
+            "sizeGuide": "Size Guide"
+        },
+        "company": {
+            "title": "Company",
+            "aboutUs": "About Us",
+            "careers": "Careers",
+            "press": "Press"
+        },
+        "social": {
+            "title": "Social",
+            "instagram": "Instagram",
+            "facebook": "Facebook",
+            "twitter": "Twitter"
+        },
+        "newsletter": {
+            "title": "Newsletter",
+            "description": "Sign up for our newsletter to get the latest updates.",
+            "placeholder": "Your email",
+            "signUp": "Sign Up"
+        },
+        "copyright": "© 2025 Next Store. All rights reserved."
+    },
+    "CartSheet": {
+        "title": "Shopping Cart",
+        "emptyCart": {
+            "title": "Your cart is empty",
+            "description": "Add items to your cart to see them here",
+            "continueShopping": "Continue Shopping"
+        },
+        "total": "Total",
+        "items": "items",
+        "viewCart": "View Cart"
     }
 }

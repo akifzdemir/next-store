@@ -1,22 +1,24 @@
+import { getTranslations } from "next-intl/server";
 import FeatureCard from "./FeatureCard";
 import { Truck, Undo2, Leaf } from "lucide-react";
 
-export default function FeaturesSection() {
+export default async function FeaturesSection() {
+  const t = await getTranslations("HomePage.features");
   const features = [
     {
       icon: Truck,
-      title: "Free Shipping",
-      description: "On all orders over $100",
+      title: t("freeShipping.title"),
+      description: t("freeShipping.description"),
     },
     {
       icon: Undo2,
-      title: "Easy Returns",
-      description: "30-day return policy",
+      title: t("easyReturns.title"),
+      description: t("easyReturns.description"),
     },
     {
       icon: Leaf,
-      title: "Sustainable Materials",
-      description: "Crafted with the planet in mind",
+      title: t("sustainable.title"),
+      description: t("sustainable.description"),
     },
   ];
 

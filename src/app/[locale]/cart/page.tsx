@@ -6,8 +6,10 @@ import { Minus, Plus, Trash2, ArrowLeft } from "lucide-react";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { updateQuantity, removeFromCart } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
+import { useTranslations } from "next-intl";
 
 export default function CartPage() {
+  const t = useTranslations("CartPage");
   const dispatch = useAppDispatch();
   const { items } = useAppSelector((state) => state.cart);
 
@@ -45,20 +47,20 @@ export default function CartPage() {
             href="/"
             className="text-gray-500 hover:text-blue-600 text-sm font-medium leading-normal transition-colors"
           >
-            Home
+            {t("breadcrumbs.home")}
           </Link>
           <span className="text-gray-500 text-sm font-medium leading-normal">
             /
           </span>
           <span className="text-gray-900 text-sm font-medium leading-normal">
-            Cart
+            {t("breadcrumbs.cart")}
           </span>
         </div>
       </div>
 
       <div className="mb-8">
         <p className="text-gray-900 text-4xl font-black leading-tight tracking-tight">
-          Your Shopping Cart
+          {t("title")}
         </p>
       </div>
 
@@ -68,15 +70,15 @@ export default function CartPage() {
             <Trash2 className="h-16 w-16 text-gray-400" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Your cart is empty
+            {t("emptyCart.title")}
           </h2>
-          <p className="text-gray-500 mb-8">Add items to get started</p>
+          <p className="text-gray-500 mb-8">{t("emptyCart.description")}</p>
           <Link
             href="/products"
             className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline"
           >
             <ArrowLeft className="h-5 w-5" />
-            Continue Shopping
+            {t("emptyCart.continueShopping")}
           </Link>
         </div>
       ) : (
@@ -174,17 +176,21 @@ export default function CartPage() {
             <aside className="lg:col-span-1">
               <div className="sticky top-28 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                 <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  Order Summary
+                  {t("orderSummary.title")}
                 </h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-gray-600">
+                      {t("orderSummary.subtotal")}
+                    </span>
                     <span className="font-medium text-gray-800">
                       ${subtotal.toFixed(2)}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Estimated Shipping</span>
+                    <span className="text-gray-600">
+                      {t("orderSummary.shipping")}
+                    </span>
                     <span className="font-medium text-gray-800">
                       ${shipping.toFixed(2)}
                     </span>
@@ -192,7 +198,7 @@ export default function CartPage() {
                 </div>
                 <div className="my-4 border-t border-dashed border-gray-200"></div>
                 <div className="flex justify-between text-base font-bold text-gray-900">
-                  <span>Total</span>
+                  <span>{t("orderSummary.total")}</span>
                   <span>${total.toFixed(2)}</span>
                 </div>
                 <div className="mt-6">
@@ -201,7 +207,7 @@ export default function CartPage() {
                     size="lg"
                     className="w-full shadow-sm"
                   >
-                    Proceed to Checkout
+                    {t("orderSummary.checkout")}
                   </Button>
                 </div>
               </div>
@@ -214,7 +220,7 @@ export default function CartPage() {
               className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline"
             >
               <ArrowLeft className="h-5 w-5" />
-              Continue Shopping
+              {t("continueShopping")}
             </Link>
           </div>
         </>

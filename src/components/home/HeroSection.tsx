@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Button from "@/components/ui/Button";
+import { getTranslations } from "next-intl/server";
 
-export default function HeroSection() {
+export default async function HeroSection() {
+  const t = await getTranslations("HomePage.hero");
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="relative flex min-h-[60vh] flex-col items-center justify-center overflow-hidden rounded-xl">
@@ -17,14 +19,13 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-linear-to-b from-black/20 to-black/20" />
         <div className="relative z-10 flex flex-col items-center gap-4 p-8 text-center">
           <h1 className="text-4xl font-extrabold tracking-tighter text-white md:text-6xl">
-            Discover The New Collection
+            {t("title")}
           </h1>
           <h2 className="max-w-xl text-lg font-normal text-gray-200">
-            Timeless pieces designed for the modern wardrobe. Crafted with
-            intention, made to last.
+            {t("subtitle")}
           </h2>
           <Button variant="primary" size="lg" className="mt-4 hover:scale-105">
-            Shop Now
+            {t("shopNow")}
           </Button>
         </div>
       </div>

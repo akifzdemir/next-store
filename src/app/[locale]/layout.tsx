@@ -30,14 +30,14 @@ export default async function RootLayout({
       <body
         className={`${manrope.variable} font-sans antialiased bg-[#F9F9F9] text-[#333333]`}
       >
-        <StoreProvider>
-          <Header />
-          <NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <StoreProvider>
+            <Header />
             {children}
             <Toaster />
-          </NextIntlClientProvider>
-          <Footer />
-        </StoreProvider>
+            <Footer />
+          </StoreProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

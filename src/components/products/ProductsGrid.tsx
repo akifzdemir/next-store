@@ -5,12 +5,14 @@ import { motion, AnimatePresence } from "motion/react";
 import type { ProductModel } from "@/models";
 import ProductCard from "@/components/home/ProductCard";
 import ProductFilters, { FilterState } from "./ProductFilters";
+import { useTranslations } from "next-intl";
 
 interface ProductsGridProps {
   products: ProductModel[];
 }
 
 export default function ProductsGrid({ products }: ProductsGridProps) {
+  const t = useTranslations("ProductsPage");
   const [filters, setFilters] = useState<FilterState>({
     searchQuery: "",
     category: "all",
@@ -66,17 +68,20 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
 
       <div className="mb-6">
         <p className="text-sm text-[#6B7280]">
-          Showing {filteredProducts.length} of {products.length} products
+          {t("showing", {
+            count: filteredProducts.length,
+            total: products.length,
+          })}
         </p>
       </div>
 
       {filteredProducts.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20">
           <p className="text-lg font-semibold text-[#333333]">
-            No products found
+            {t("noProductsFound")}
           </p>
           <p className="text-sm text-[#6B7280] mt-2">
-            Try adjusting your filters
+            {t("tryAdjustingFilters")}
           </p>
         </div>
       ) : (
