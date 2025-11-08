@@ -4,6 +4,7 @@ import { Search, User, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useAppSelector } from "@/store/hooks";
+import Button from "@/components/ui/Button";
 
 export default function Header() {
   const params = useParams();
@@ -55,12 +56,12 @@ export default function Header() {
             </a>
           </nav>
           <div className="flex items-center gap-3">
-            <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-200/60 hover:bg-gray-300/60 transition-colors">
+            <Button variant="icon" size="icon">
               <Search className="h-5 w-5" />
-            </button>
-            <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-200/60 hover:bg-gray-300/60 transition-colors">
+            </Button>
+            <Button variant="icon" size="icon">
               <User className="h-5 w-5" />
-            </button>
+            </Button>
             <Link
               href={`/${locale}/cart`}
               className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-200/60 hover:bg-gray-300/60 transition-colors"

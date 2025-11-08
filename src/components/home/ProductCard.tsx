@@ -7,6 +7,7 @@ import type { ProductModel } from "@/models";
 import { ShoppingCart } from "lucide-react";
 import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cartSlice";
+import Button from "@/components/ui/Button";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -42,12 +43,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           fill
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
-        <button
+        <Button
           onClick={handleAddToCart}
-          className="absolute bottom-3 right-3 cursor-pointer flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md opacity-0 transition-opacity group-hover:opacity-100 hover:shadow-lg"
+          variant="icon"
+          size="icon"
+          className="absolute bottom-3 right-3 bg-white shadow-md opacity-0 transition-opacity group-hover:opacity-100 hover:shadow-lg hover:bg-white"
         >
           <ShoppingCart className="h-5 w-5" />
-        </button>
+        </Button>
       </div>
       <div className="flex flex-col gap-1">
         <h3 className="text-base font-semibold line-clamp-1">

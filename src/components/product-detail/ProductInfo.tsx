@@ -5,6 +5,7 @@ import { Minus, Plus, ShoppingCart } from "lucide-react";
 import type { ProductModel } from "@/models";
 import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cartSlice";
+import Button from "@/components/ui/Button";
 
 interface ProductInfoProps {
   product: ProductModel;
@@ -68,11 +69,15 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </p>
           <div className="flex items-center gap-3">
             {colors.map((color, index) => (
-              <button
+              <Button
                 key={color.name}
                 onClick={() => setSelectedColor(index)}
                 aria-label={`Select color ${color.name}`}
-                className={`size-8 rounded-full transition-all ${color.value} ${
+                variant="ghost"
+                size="icon"
+                className={`size-8 rounded-full transition-all ${
+                  color.value
+                } hover:bg-transparent ${
                   selectedColor === index
                     ? "ring-2 ring-offset-2 ring-blue-500 ring-offset-white"
                     : "hover:ring-2 hover:ring-offset-2 hover:ring-blue-500/50 ring-offset-white"
@@ -86,17 +91,19 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           <p className="text-sm font-bold text-gray-900">Size</p>
           <div className="grid grid-cols-3 gap-3">
             {sizes.map((size, index) => (
-              <button
+              <Button
                 key={size}
                 onClick={() => setSelectedSize(index)}
-                className={`flex items-center justify-center p-3 rounded-lg text-sm font-semibold transition-all ${
+                variant="ghost"
+                size="md"
+                className={`p-3 ${
                   selectedSize === index
-                    ? "bg-blue-50 text-blue-600 ring-1 ring-inset ring-blue-600"
-                    : "bg-gray-100 text-gray-500 hover:bg-gray-100"
+                    ? "bg-blue-50 text-blue-600 ring-1 ring-inset ring-blue-600 hover:bg-blue-50"
+                    : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                 }`}
               >
                 {size}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -105,30 +112,36 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex items-center justify-between rounded-lg bg-gray-100 px-3">
-          <button
+          <Button
             onClick={() => handleQuantityChange(-1)}
-            className="h-10 w-10 flex items-center justify-center text-gray-500 hover:text-gray-900 transition-colors"
+            variant="ghost"
+            size="icon"
+            className="bg-transparent hover:bg-transparent hover:text-gray-900"
           >
             <Minus className="h-4 w-4" />
-          </button>
+          </Button>
           <span className="text-base font-bold w-8 text-center text-gray-900">
             {quantity}
           </span>
-          <button
+          <Button
             onClick={() => handleQuantityChange(1)}
-            className="h-10 w-10 flex items-center justify-center text-gray-500 hover:text-gray-900 transition-colors"
+            variant="ghost"
+            size="icon"
+            className="bg-transparent hover:bg-transparent hover:text-gray-900"
           >
             <Plus className="h-4 w-4" />
-          </button>
+          </Button>
         </div>
 
-        <button
+        <Button
           onClick={handleAddToCart}
-          className="flex-1 flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-blue-600 text-white gap-2 text-base font-bold leading-normal tracking-wide min-w-0 px-6 hover:bg-blue-700 transition-colors"
+          variant="primary"
+          size="lg"
+          className="flex-1 max-w-[480px] gap-2 min-w-0"
         >
           <ShoppingCart className="h-5 w-5" />
           <span>Add to Cart</span>
-        </button>
+        </Button>
       </div>
     </div>
   );

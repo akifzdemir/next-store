@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
   return (
@@ -22,9 +23,9 @@ export default function HeroSection() {
             Timeless pieces designed for the modern wardrobe. Crafted with
             intention, made to last.
           </h2>
-          <button className="mt-4 flex h-12 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[#3B82F6] px-6 text-base font-bold text-white transition-transform hover:scale-105">
-            <span className="truncate">Shop Now</span>
-          </button>
+          <Button variant="primary" size="lg" className="mt-4 hover:scale-105">
+            Shop Now
+          </Button>
         </div>
       </div>
     </section>

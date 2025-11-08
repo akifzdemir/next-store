@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Minus, Plus, Trash2, ArrowLeft } from "lucide-react";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { updateQuantity, removeFromCart } from "@/store/cartSlice";
+import Button from "@/components/ui/Button";
 
 export default function CartPage() {
   const dispatch = useAppDispatch();
@@ -195,9 +196,13 @@ export default function CartPage() {
                   <span>${total.toFixed(2)}</span>
                 </div>
                 <div className="mt-6">
-                  <button className="w-full flex items-center justify-center rounded-lg h-12 bg-blue-600 text-white text-base font-bold leading-normal tracking-wide hover:bg-blue-700 transition-colors shadow-sm">
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="w-full shadow-sm"
+                  >
                     Proceed to Checkout
-                  </button>
+                  </Button>
                 </div>
               </div>
             </aside>
