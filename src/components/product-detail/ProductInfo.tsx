@@ -6,6 +6,7 @@ import type { ProductModel } from "@/models";
 import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
+import { toast } from "sonner";
 
 interface ProductInfoProps {
   product: ProductModel;
@@ -39,6 +40,10 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         selectedSize: sizes[selectedSize],
       })
     );
+    toast.success(`${quantity} item${quantity > 1 ? "s" : ""} added to cart`, {
+      description: product.title,
+      duration: 3000,
+    });
     setQuantity(1);
   };
 

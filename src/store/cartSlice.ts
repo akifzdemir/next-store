@@ -10,10 +10,12 @@ export interface CartItem {
 
 interface CartState {
   items: CartItem[];
+  isSheetOpen: boolean;
 }
 
 const initialState: CartState = {
   items: [],
+  isSheetOpen: false,
 };
 
 const cartSlice = createSlice({
@@ -91,10 +93,26 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.items = [];
     },
+    toggleCartSheet: (state) => {
+      state.isSheetOpen = !state.isSheetOpen;
+    },
+    openCartSheet: (state) => {
+      state.isSheetOpen = true;
+    },
+    closeCartSheet: (state) => {
+      state.isSheetOpen = false;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, updateQuantity, clearCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+  clearCart,
+  toggleCartSheet,
+  openCartSheet,
+  closeCartSheet,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

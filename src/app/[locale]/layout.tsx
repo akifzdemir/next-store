@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import StoreProvider from "@/components/StoreProvider";
+import { Toaster } from "sonner";
 
 const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
@@ -31,7 +32,10 @@ export default async function RootLayout({
       >
         <StoreProvider>
           <Header />
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
           <Footer />
         </StoreProvider>
       </body>

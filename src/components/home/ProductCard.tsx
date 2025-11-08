@@ -9,6 +9,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
 import { createProductUrl } from "@/lib/url";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -29,6 +30,10 @@ export default function ProductCard({ product }: ProductCardProps) {
         selectedSize: "Medium",
       })
     );
+    toast.success("Added to cart", {
+      description: product.title,
+      duration: 3000,
+    });
   };
 
   return (
