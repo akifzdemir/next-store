@@ -1,22 +1,41 @@
 "use client";
 
-import { Search, User, ShoppingBag } from "lucide-react";
+import { Search, User, ShoppingBag, Globe } from "lucide-react";
 import Link from "next/link";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { toggleCartSheet } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
 import CartSheet from "@/components/cart/CartSheet";
 import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import { useState } from "react";
 
 export default function Header() {
   const t = useTranslations("Header.nav");
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const pathname = usePathname();
+  const router = useRouter();
+  const params = useParams();
+  const currentLocale = params.locale as string;
+  const [isLangOpen, setIsLangOpen] = useState(false);
 
   const handleCartClick = () => {
     dispatch(toggleCartSheet());
   };
+
+  const changeLanguage = (newLocale: string) => {
+    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, "");
+    router.push(`/${newLocale}${pathWithoutLocale}`);
+    setIsLangOpen(false);
+  };
+
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "tr", label: "Türkçe" },
+  ];
 
   return (
     <>
@@ -70,17 +89,51 @@ export default function Header() {
               <Button variant="icon" size="icon">
                 <User className="h-5 w-5" />
               </Button>
-              <button
-                onClick={handleCartClick}
-                className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-200/60 hover:bg-gray-300/60 transition-colors"
-              >
-                <ShoppingBag className="h-5 w-5" />
-                {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
-                    {totalItems}
-                  </span>
+
+              <div className="relative">
+                <Button
+                  variant="icon"
+                  size="icon"
+                  onClick={() => setIsLangOpen(!isLangOpen)}
+                >
+                  <Globe className="h-5 w-5" />
+                </Button>
+
+                {isLangOpen && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-40"
+                      onClick={() => setIsLangOpen(false)}
+                    />
+                    <div className="absolute right-0 top-12 z-50 w-40 rounded-lg border border-gray-200 bg-white shadow-lg py-2">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => changeLanguage(lang.code)}
+                          className={`w-full px-4 cursor-pointer py-2 text-left text-sm hover:bg-gray-100 transition-colors flex items-center gap-2 ${
+                            currentLocale === lang.code
+                              ? "bg-blue-50 text-blue-600 font-medium"
+                              : "text-gray-700"
+                          }`}
+                        >
+                          <span>{lang.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </>
                 )}
-              </button>
+              </div>
+
+              <div className="relative">
+                <Button variant="icon" size="icon" onClick={handleCartClick}>
+                  <ShoppingBag className="h-5 w-5" />
+                  {totalItems > 0 && (
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                      {totalItems}
+                    </span>
+                  )}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
