@@ -2,6 +2,19 @@ import { API_URL } from "@/config/endpoints";
 import { getTranslations } from "next-intl/server";
 import type { ProductModel } from "@/models";
 import ProductsGrid from "@/components/products/ProductsGrid";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All Products",
+  description:
+    "Browse our complete collection of premium quality products. Find the perfect piece for your wardrobe from our wide selection of fashion items.",
+  openGraph: {
+    title: "All Products - Next Store",
+    description:
+      "Browse our complete collection of premium quality products. Find the perfect piece for your wardrobe.",
+    type: "website",
+  },
+};
 
 const getAllProducts = async (): Promise<ProductModel[]> => {
   const res = await fetch(`${API_URL}/products`);

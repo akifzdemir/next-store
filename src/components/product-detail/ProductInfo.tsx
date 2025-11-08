@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Minus, Plus, ShoppingCart } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Star } from "lucide-react";
 import type { ProductModel } from "@/models";
 import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cartSlice";
@@ -55,9 +55,32 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         <h1 className="text-3xl lg:text-4xl font-black tracking-tighter text-gray-900">
           {product.title}
         </h1>
-        <p className="text-2xl font-bold text-gray-900">
-          ${product.price.toFixed(2)}
-        </p>
+        <div className="flex items-center gap-3">
+          <p className="text-2xl font-bold text-gray-900">
+            ${product.price.toFixed(2)}
+          </p>
+        </div>
+        <div className="flex items-center gap-2 mt-1">
+          <div className="flex items-center">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className={`h-4 w-4 ${
+                  i < Math.floor(product.rating.rate)
+                    ? "fill-yellow-400 text-yellow-400"
+                    : "fill-gray-200 text-gray-200"
+                }`}
+              />
+            ))}
+          </div>
+          <span className="text-sm text-gray-600">
+            {product.rating.rate.toFixed(1)}
+          </span>
+          <span className="text-sm text-gray-400">•</span>
+          <span className="text-sm text-gray-600">
+            {t("rating.reviews", { count: product.rating.count })}
+          </span>
+        </div>
       </div>
 
       <p className="text-base font-normal leading-relaxed text-gray-500">

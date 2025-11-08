@@ -59,6 +59,10 @@
         "addToCart": "Sepete Ekle",
         "addedToCart": "{count} ürün sepete eklendi",
         "addedToCart_other": "{count} ürün sepete eklendi",
+        "rating": {
+            "reviews": "{count} değerlendirme",
+            "reviews_other": "{count} değerlendirme"
+        },
         "sizes": {
             "small": "Küçük",
             "medium": "Orta",

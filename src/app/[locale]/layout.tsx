@@ -7,12 +7,44 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import StoreProvider from "@/components/StoreProvider";
 import { Toaster } from "sonner";
+import type { Metadata } from "next";
 
 const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-manrope",
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: "Next Store - Discover The New Collection",
+    template: "%s | Next Store",
+  },
+  description:
+    "Timeless pieces designed for the modern wardrobe. Crafted with intention, made to last. Shop premium quality fashion products at Next Store.",
+  openGraph: {
+    title: "Next Store - Discover The New Collection",
+    description:
+      "Timeless pieces designed for the modern wardrobe. Crafted with intention, made to last.",
+    type: "website",
+    siteName: "Next Store",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Next Store - Discover The New Collection",
+    description:
+      "Timeless pieces designed for the modern wardrobe. Crafted with intention, made to last.",
+  },
+  keywords: [
+    "fashion",
+    "clothing",
+    "shopping",
+    "e-commerce",
+    "next store",
+    "premium quality",
+    "modern wardrobe",
+  ],
+};
 
 export default async function RootLayout({
   children,

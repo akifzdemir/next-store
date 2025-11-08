@@ -59,6 +59,10 @@
         "addToCart": "Add to Cart",
         "addedToCart": "{count} item added to cart",
         "addedToCart_other": "{count} items added to cart",
+        "rating": {
+            "reviews": "{count} reviews",
+            "reviews_other": "{count} reviews"
+        },
         "sizes": {
             "small": "Small",
             "medium": "Medium",
