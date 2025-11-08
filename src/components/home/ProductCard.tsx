@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import type { ProductModel } from "@/models";
 import { ShoppingCart } from "lucide-react";
+import { useAppDispatch } from "@/store/hooks";
+import { addToCart } from "@/store/cartSlice";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -13,6 +15,19 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const params = useParams();
   const locale = params.locale || "en";
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    dispatch(
+      addToCart({
+        product,
+        quantity: 1,
+        selectedColor: "White",
+        selectedSize: "Medium",
+      })
+    );
+  };
 
   return (
     <Link
@@ -28,10 +43,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
         <button
-          onClick={(e) => {
-            e.preventDefault();
-            // TODO: Add to cart functionality
-          }}
+          onClick={handleAddToCart}
           className="absolute bottom-3 right-3 cursor-pointer flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md opacity-0 transition-opacity group-hover:opacity-100 hover:shadow-lg"
         >
           <ShoppingCart className="h-5 w-5" />

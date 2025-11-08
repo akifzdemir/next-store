@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import StoreProvider from "@/components/StoreProvider";
 
 const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
@@ -28,9 +29,11 @@ export default async function RootLayout({
       <body
         className={`${manrope.variable} font-sans antialiased bg-[#F9F9F9] text-[#333333]`}
       >
-        <Header />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
-        <Footer />
+        <StoreProvider>
+          <Header />
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );

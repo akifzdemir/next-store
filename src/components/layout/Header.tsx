@@ -1,6 +1,15 @@
+"use client";
+
 import { Search, User, ShoppingBag } from "lucide-react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useAppSelector } from "@/store/hooks";
 
 export default function Header() {
+  const params = useParams();
+  const locale = params.locale || "en";
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200/50 bg-[#F9F9F9]/80 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -52,12 +61,17 @@ export default function Header() {
             <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-200/60 hover:bg-gray-300/60 transition-colors">
               <User className="h-5 w-5" />
             </button>
-            <button className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-200/60 hover:bg-gray-300/60 transition-colors">
+            <Link
+              href={`/${locale}/cart`}
+              className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-200/60 hover:bg-gray-300/60 transition-colors"
+            >
               <ShoppingBag className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#3B82F6] text-xs font-bold text-white">
-                3
-              </span>
-            </button>
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
           </div>
         </div>
       </div>

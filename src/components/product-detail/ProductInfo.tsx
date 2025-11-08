@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import type { ProductModel } from "@/models";
+import { useAppDispatch } from "@/store/hooks";
+import { addToCart } from "@/store/cartSlice";
 
 interface ProductInfoProps {
   product: ProductModel;
@@ -18,12 +20,25 @@ const colors = [
 const sizes = ["Small", "Medium", "Large"];
 
 export default function ProductInfo({ product }: ProductInfoProps) {
+  const dispatch = useAppDispatch();
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState(1);
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (delta: number) => {
     setQuantity((prev) => Math.max(1, prev + delta));
+  };
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        product,
+        quantity,
+        selectedColor: colors[selectedColor].name,
+        selectedSize: sizes[selectedSize],
+      })
+    );
+    setQuantity(1);
   };
 
   return (
@@ -107,7 +122,10 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </button>
         </div>
 
-        <button className="flex-1 flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-blue-600 text-white gap-2 text-base font-bold leading-normal tracking-wide min-w-0 px-6 hover:bg-blue-700 transition-colors">
+        <button
+          onClick={handleAddToCart}
+          className="flex-1 flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-blue-600 text-white gap-2 text-base font-bold leading-normal tracking-wide min-w-0 px-6 hover:bg-blue-700 transition-colors"
+        >
           <ShoppingCart className="h-5 w-5" />
           <span>Add to Cart</span>
         </button>
