@@ -1,4 +1,25 @@
 {
+    "metadata": {
+        "home": {
+            "title": "Next Store - Yeni Koleksiyonu Keşfedin",
+            "description": "Modern gardırop için tasarlanmış zamansız parçalar. Niyet ile tasarlandı, uzun ömürlü olması için yapıldı. Next Store'da premium kaliteli moda ürünlerini keşfedin.",
+            "keywords": "moda, giyim, alışveriş, e-ticaret, next store, premium kalite, modern gardırop"
+        },
+        "products": {
+            "title": "Tüm Ürünler",
+            "description": "Premium kaliteli ürünlerimizin tamamına göz atın. Geniş moda ürünleri seçeneklerimiz arasından gardırobunuz için mükemmel parçayı bulun."
+        },
+        "cart": {
+            "title": "Alışveriş Sepeti",
+            "description": "Alışveriş sepetinizi gözden geçirin ve ödemeye geçin. Satın alma işleminizi tamamlamadan önce seçtiğiniz ürünleri ve miktarları yönetin."
+        },
+        "productDetail": {
+            "notFound": {
+                "title": "Ürün Bulunamadı",
+                "description": "Aradığınız ürün mevcut değil."
+            }
+        }
+    },
     "HomePage": {
         "title": "Merhaba dünya!",
         "hero": {

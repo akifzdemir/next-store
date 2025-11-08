@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import StoreProvider from "@/components/StoreProvider";
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
@@ -15,36 +16,35 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Next Store - Discover The New Collection",
-    template: "%s | Next Store",
-  },
-  description:
-    "Timeless pieces designed for the modern wardrobe. Crafted with intention, made to last. Shop premium quality fashion products at Next Store.",
-  openGraph: {
-    title: "Next Store - Discover The New Collection",
-    description:
-      "Timeless pieces designed for the modern wardrobe. Crafted with intention, made to last.",
-    type: "website",
-    siteName: "Next Store",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Next Store - Discover The New Collection",
-    description:
-      "Timeless pieces designed for the modern wardrobe. Crafted with intention, made to last.",
-  },
-  keywords: [
-    "fashion",
-    "clothing",
-    "shopping",
-    "e-commerce",
-    "next store",
-    "premium quality",
-    "modern wardrobe",
-  ],
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations("metadata.home");
+
+  return {
+    title: {
+      default: t("title"),
+      template: "%s | Next Store",
+    },
+    description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      siteName: "Next Store",
+      locale: locale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
+    keywords: t("keywords").split(", "),
+  };
+}
 
 export default async function RootLayout({
   children,

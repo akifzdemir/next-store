@@ -1,4 +1,25 @@
 {
+    "metadata": {
+        "home": {
+            "title": "Next Store - Discover The New Collection",
+            "description": "Timeless pieces designed for the modern wardrobe. Crafted with intention, made to last. Shop premium quality fashion products at Next Store.",
+            "keywords": "fashion, clothing, shopping, e-commerce, next store, premium quality, modern wardrobe"
+        },
+        "products": {
+            "title": "All Products",
+            "description": "Browse our complete collection of premium quality products. Find the perfect piece for your wardrobe from our wide selection of fashion items."
+        },
+        "cart": {
+            "title": "Shopping Cart",
+            "description": "Review your shopping cart and proceed to checkout. Manage your selected items and quantities before completing your purchase."
+        },
+        "productDetail": {
+            "notFound": {
+                "title": "Product Not Found",
+                "description": "The product you are looking for does not exist."
+            }
+        }
+    },
     "HomePage": {
         "title": "Hello world!",
         "hero": {

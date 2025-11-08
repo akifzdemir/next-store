@@ -6,6 +6,7 @@ import ProductInfo from "@/components/product-detail/ProductInfo";
 import Breadcrumbs from "@/components/product-detail/Breadcrumbs";
 import type { Metadata } from "next";
 import { cache } from "react";
+import { getTranslations } from "next-intl/server";
 
 const getProduct = cache(async (id: string): Promise<ProductModel | null> => {
   const res = await fetch(`${API_URL}/products/${id}`);
@@ -17,20 +18,21 @@ const getProduct = cache(async (id: string): Promise<ProductModel | null> => {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string; slug: string }>;
+  params: Promise<{ id: string; slug: string; locale: string }>;
 }): Promise<Metadata> {
-  const { id } = await params;
+  const { id, locale } = await params;
   const product = await getProduct(id);
 
   if (!product) {
+    const t = await getTranslations("metadata.productDetail.notFound");
     return {
-      title: "Product Not Found",
-      description: "The product you are looking for does not exist.",
+      title: t("title"),
+      description: t("description"),
     };
   }
 
   return {
-    title: `${product.title} - Next Store`,
+    title: product.title,
     description: product.description,
     openGraph: {
       title: product.title,
@@ -44,6 +46,7 @@ export async function generateMetadata({
         },
       ],
       type: "website",
+      locale: locale,
     },
     twitter: {
       card: "summary_large_image",

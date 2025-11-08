@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Shopping Cart",
-  description:
-    "Review your shopping cart and proceed to checkout. Manage your selected items and quantities before completing your purchase.",
-  openGraph: {
-    title: "Shopping Cart - Next Store",
-    description:
-      "Review your shopping cart and proceed to checkout. Manage your selected items before purchase.",
-    type: "website",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations("metadata.cart");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      title: `${t("title")} - Next Store`,
+      description: t("description"),
+      type: "website",
+      locale: locale,
+    },
+  };
+}
 
 export default function CartLayout({
   children,

@@ -4,17 +4,25 @@ import type { ProductModel } from "@/models";
 import ProductsGrid from "@/components/products/ProductsGrid";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "All Products",
-  description:
-    "Browse our complete collection of premium quality products. Find the perfect piece for your wardrobe from our wide selection of fashion items.",
-  openGraph: {
-    title: "All Products - Next Store",
-    description:
-      "Browse our complete collection of premium quality products. Find the perfect piece for your wardrobe.",
-    type: "website",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations("metadata.products");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      title: `${t("title")} - Next Store`,
+      description: t("description"),
+      type: "website",
+      locale: locale,
+    },
+  };
+}
 
 const getAllProducts = async (): Promise<ProductModel[]> => {
   const res = await fetch(`${API_URL}/products`);
