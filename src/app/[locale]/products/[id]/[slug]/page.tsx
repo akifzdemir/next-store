@@ -15,7 +15,7 @@ const getProduct = async (id: string): Promise<ProductModel | null> => {
 export default async function ProductDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; slug: string }>;
 }) {
   const { id } = await params;
   const product = await getProduct(id);

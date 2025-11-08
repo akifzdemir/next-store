@@ -8,6 +8,7 @@ import { ShoppingCart } from "lucide-react";
 import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
+import { createProductUrl } from "@/lib/url";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -32,7 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link
-      href={`/${locale}/products/${product.id}`}
+      href={createProductUrl(product.id, product.title, locale as string)}
       className="group relative flex flex-col gap-3 cursor-pointer"
     >
       <div className="relative aspect-3/4 w-full overflow-hidden rounded-lg bg-gray-200">

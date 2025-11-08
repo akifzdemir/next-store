@@ -15,7 +15,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-gray-200/50 bg-[#F9F9F9]/80 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center gap-4">
+          <Link href={"/"} className="flex items-center gap-4">
             <svg
               className="h-6 w-6 text-[#333333]"
               fill="none"
@@ -28,7 +28,7 @@ export default function Header() {
               ></path>
             </svg>
             <h2 className="text-xl font-bold tracking-tight">Next Store</h2>
-          </div>
+          </Link>
           <nav className="hidden items-center gap-8 md:flex">
             <a
               className="text-sm font-medium text-[#6B7280] hover:text-[#333333] transition-colors"
