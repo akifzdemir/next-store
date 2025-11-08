@@ -13,6 +13,7 @@ import {
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { createProductUrl } from "@/lib/url";
 
 export default function CartSheet() {
   const t = useTranslations("CartSheet");
@@ -106,9 +107,17 @@ export default function CartSheet() {
                           <div className="flex flex-1 flex-col gap-2">
                             <div className="flex items-start justify-between gap-2">
                               <div className="flex-1 min-w-0">
-                                <h3 className="text-sm font-medium text-gray-900 line-clamp-1">
+                                <Link
+                                  href={createProductUrl(
+                                    item.product.id,
+                                    item.product.title,
+                                    locale as string
+                                  )}
+                                  onClick={handleClose}
+                                  className="text-sm font-medium text-gray-900 line-clamp-1 hover:text-blue-600 transition-colors"
+                                >
                                   {item.product.title}
-                                </h3>
+                                </Link>
                                 {(item.selectedColor || item.selectedSize) && (
                                   <p className="text-xs text-gray-500 mt-0.5">
                                     {[item.selectedColor, item.selectedSize]

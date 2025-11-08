@@ -7,9 +7,13 @@ import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { updateQuantity, removeFromCart } from "@/store/cartSlice";
 import Button from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
+import { createProductUrl } from "@/lib/url";
+import { useParams } from "next/navigation";
 
 export default function CartPage() {
   const t = useTranslations("CartPage");
+  const params = useParams();
+  const locale = (params.locale as string) || "en";
   const dispatch = useAppDispatch();
   const { items } = useAppSelector((state) => state.cart);
 
@@ -102,9 +106,16 @@ export default function CartPage() {
 
                   <div className="flex-1 grid grid-cols-1 md:grid-cols-3 items-center gap-4">
                     <div className="flex flex-col justify-center">
-                      <p className="text-gray-900 text-base font-semibold leading-normal line-clamp-1">
+                      <Link
+                        href={createProductUrl(
+                          item.product.id,
+                          item.product.title,
+                          locale
+                        )}
+                        className="text-gray-900 text-base font-semibold leading-normal line-clamp-1 hover:text-blue-600 transition-colors"
+                      >
                         {item.product.title}
-                      </p>
+                      </Link>
                       {(item.selectedColor || item.selectedSize) && (
                         <p className="text-gray-500 text-sm font-normal leading-normal line-clamp-2">
                           {item.selectedColor}

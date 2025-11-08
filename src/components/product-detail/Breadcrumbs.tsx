@@ -23,7 +23,7 @@ export default function Breadcrumbs({
         /
       </span>
       <Link
-        href={`/products?category=${category}`}
+        href={`/products`}
         className="text-gray-500 text-sm font-medium leading-normal hover:text-blue-600 transition-colors capitalize"
       >
         {category}
