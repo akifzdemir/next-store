@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next Store - E-Commerce Platform
 
-## Getting Started
+[English](#english) | [Türkçe](#türkçe)
 
-First, run the development server:
+---
+
+## English
+
+A modern, fully-featured e-commerce platform built with Next.js 15, featuring internationalization, dark mode, and a complete shopping experience.
+
+### Features
+
+- 🌍 **Multi-language Support** - English and Turkish localization with next-intl
+- 🌙 **Dark Mode** - Smooth theme switching with system preference detection
+- 🛒 **Shopping Cart** - Full cart functionality with Redux state management
+- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
+- ♿ **Accessibility** - WCAG compliant with proper ARIA labels and contrast ratios
+- 🎨 **Modern UI** - Clean, professional design with smooth animations
+- 🔍 **Product Filtering** - Search, sort, and filter products by category and price
+- 🖼️ **Optimized Images** - Next.js Image optimization for better performance
+
+### Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **State Management:** Redux Toolkit
+- **Internationalization:** next-intl
+- **Icons:** Lucide React
+- **Notifications:** Sonner
+
+### Getting Started
+
+1. **Install dependencies:**
+
+```bash
+npm install
+```
+
+2. **Run the development server:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Open your browser:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Available Scripts
 
-## Learn More
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
 
-To learn more about Next.js, take a look at the following resources:
+### Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/              # Next.js app directory
+├── components/       # React components
+├── store/           # Redux store and slices
+├── lib/             # Utility functions
+├── models/          # TypeScript types
+├── config/          # Configuration files
+└── i18n/            # Internationalization setup
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Internationalization
 
-## Deploy on Vercel
+The app supports English and Turkish. Language can be switched via the globe icon in the header. URLs are automatically prefixed with the locale (e.g., `/en/products`, `/tr/products`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create a `.env.local` file in the root directory:
+
+```env
+NEXT_PUBLIC_API_URL=https://fakestoreapi.com/products
+```
+
+---
+
+## Türkçe
+
+Next.js 15 ile oluşturulmuş, çok dilli destek, karanlık mod ve eksiksiz alışveriş deneyimi sunan modern bir e-ticaret platformu.
+
+### Özellikler
+
+- 🌍 **Çok Dilli Destek** - next-intl ile İngilizce ve Türkçe yerelleştirme
+- 🌙 **Karanlık Mod** - Sistem tercihi algılama ile yumuşak tema geçişi
+- 🛒 **Alışveriş Sepeti** - Redux state yönetimi ile tam sepet işlevselliği
+- 📱 **Responsive Tasarım** - Tailwind CSS ile mobil öncelikli yaklaşım
+- ♿ **Erişilebilirlik** - Uygun ARIA etiketleri ve kontrast oranları ile WCAG uyumlu
+- 🎨 **Modern Arayüz** - Yumuşak animasyonlarla temiz, profesyonel tasarım
+- 🔍 **Ürün Filtreleme** - Kategori ve fiyata göre ürün arama, sıralama ve filtreleme
+- 🖼️ **Optimize Edilmiş Görseller** - Daha iyi performans için Next.js Image optimizasyonu
+
+### Teknoloji Yığını
+
+- **Framework:** Next.js 15 (App Router)
+- **Dil:** TypeScript
+- **Stil:** Tailwind CSS
+- **State Yönetimi:** Redux Toolkit
+- **Çok Dilli Destek:** next-intl
+- **İkonlar:** Lucide React
+- **Bildirimler:** Sonner
+
+### Başlangıç
+
+1. **Bağımlılıkları yükleyin:**
+
+```bash
+npm install
+```
+
+2. **Geliştirme sunucusunu başlatın:**
+
+```bash
+npm run dev
+```
+
+3. **Tarayıcınızı açın:**
+
+[http://localhost:3000](http://localhost:3000) adresine gidin
+
+### Kullanılabilir Komutlar
+
+- `npm run dev` - Geliştirme sunucusunu başlat
+- `npm run build` - Production için derle
+- `npm start` - Production sunucusunu başlat
+- `npm run lint` - ESLint çalıştır
+
+### Proje Yapısı
+
+```
+src/
+├── app/              # Next.js app dizini
+├── components/       # React bileşenleri
+├── store/           # Redux store ve slice'lar
+├── lib/             # Yardımcı fonksiyonlar
+├── models/          # TypeScript tipleri
+├── config/          # Yapılandırma dosyaları
+└── i18n/            # Çok dilli destek kurulumu
+```
+
+### Çok Dilli Destek
+
+Uygulama İngilizce ve Türkçe dillerini destekler. Dil, header'daki dünya ikonu üzerinden değiştirilebilir. URL'ler otomatik olarak dil kodu ile öneklenir (örn. `/en/products`, `/tr/products`).
+
+### Ortam Değişkenleri
+
+Kök dizinde bir `.env.local` dosyası oluşturun:
+
+```env
+NEXT_PUBLIC_API_URL=https://fakestoreapi.com/products
+```
+
+---
+
+## License / Lisans
+
+MIT
