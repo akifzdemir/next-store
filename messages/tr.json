@@ -114,14 +114,23 @@
             "total": "Toplam",
             "checkout": "Ödemeye Geç"
         },
-        "continueShopping": "Alışverişe Devam Et"
+        "continueShopping": "Alışverişe Devam Et",
+        "removeItem": "Ürünü kaldır",
+        "decreaseQuantity": "Miktarı azalt",
+        "increaseQuantity": "Miktarı artır",
+        "quantity": "Miktar"
     },
     "Header": {
         "nav": {
             "newArrivals": "Yeni Gelenler",
             "women": "Kadın",
             "men": "Erkek",
-            "accessories": "Aksesuarlar"
+            "accessories": "Aksesuarlar",
+            "search": "Ara",
+            "account": "Hesap",
+            "language": "Dil değiştir",
+            "cart": "Alışveriş sepeti",
+            "items": "ürün"
         }
     },
     "Footer": {

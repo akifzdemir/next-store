@@ -114,14 +114,23 @@
             "total": "Total",
             "checkout": "Proceed to Checkout"
         },
-        "continueShopping": "Continue Shopping"
+        "continueShopping": "Continue Shopping",
+        "removeItem": "Remove item",
+        "decreaseQuantity": "Decrease quantity",
+        "increaseQuantity": "Increase quantity",
+        "quantity": "Quantity"
     },
     "Header": {
         "nav": {
             "newArrivals": "New Arrivals",
             "women": "Women",
             "men": "Men",
-            "accessories": "Accessories"
+            "accessories": "Accessories",
+            "search": "Search",
+            "account": "Account",
+            "language": "Change language",
+            "cart": "Shopping cart",
+            "items": "items"
         }
     },
     "Footer": {

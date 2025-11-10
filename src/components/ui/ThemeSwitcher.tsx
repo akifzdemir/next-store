@@ -68,7 +68,13 @@ const ThemeSwitcher = ({ duration = 400 }: ThemeSwitcherProps) => {
   }, [isDark, duration, setTheme]);
 
   return (
-    <Button ref={buttonRef} variant="icon" size="icon" onClick={toggleTheme}>
+    <Button
+      ref={buttonRef}
+      variant="icon"
+      size="icon"
+      onClick={toggleTheme}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    >
       {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
       <span className="sr-only">Toggle theme</span>
     </Button>

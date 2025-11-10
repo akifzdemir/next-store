@@ -27,7 +27,7 @@ export default async function Footer() {
             <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-md">
               {t("description")}
             </p>
-            <p className="mt-6 text-sm text-gray-500 dark:text-gray-500">
+            <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">
               © {new Date().getFullYear()} Next Store. {t("copyright")}
             </p>
           </div>

@@ -137,6 +137,7 @@ export default function CartPage() {
                             )
                           }
                           className="text-lg font-medium leading-normal flex h-7 w-7 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 cursor-pointer transition-colors"
+                          aria-label={t("decreaseQuantity")}
                         >
                           <Minus className="h-4 w-4" />
                         </button>
@@ -145,6 +146,7 @@ export default function CartPage() {
                           type="number"
                           value={item.quantity}
                           readOnly
+                          aria-label={t("quantity")}
                         />
                         <button
                           onClick={() =>
@@ -156,6 +158,7 @@ export default function CartPage() {
                             )
                           }
                           className="text-lg font-medium leading-normal flex h-7 w-7 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 cursor-pointer transition-colors"
+                          aria-label={t("increaseQuantity")}
                         >
                           <Plus className="h-4 w-4" />
                         </button>
@@ -175,6 +178,7 @@ export default function CartPage() {
                           )
                         }
                         className="text-gray-400 hover:text-red-500 transition-colors"
+                        aria-label={t("removeItem")}
                       >
                         <Trash2 className="h-5 w-5" />
                       </button>

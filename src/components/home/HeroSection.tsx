@@ -25,11 +25,11 @@ export default async function HeroSection() {
           <h2 className="max-w-xl text-lg font-normal text-gray-200">
             {t("subtitle")}
           </h2>
-          <Link href="/products">
+          <Link href="/products" className="mt-4">
             <Button
               variant="primary"
               size="lg"
-              className="mt-4 hover:scale-105"
+              className="hover:scale-105 min-h-[48px]"
             >
               {t("shopNow")}
             </Button>

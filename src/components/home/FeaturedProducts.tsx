@@ -12,10 +12,10 @@ export default function FeaturedProducts({ products }: FeaturedProductsProps) {
   const t = useTranslations("HomePage.featuredProducts");
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-      <div className="flex items-center justify-between pb-8">
+      <div className="flex items-center justify-between pb-8 gap-4">
         <h2 className="text-3xl font-bold tracking-tight">{t("title")}</h2>
         <Link href="/products">
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" className="min-h-[48px]">
             {t("showAll")}
           </Button>
         </Link>

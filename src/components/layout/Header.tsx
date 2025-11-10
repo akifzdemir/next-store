@@ -86,10 +86,10 @@ export default function Header() {
               </a>
             </nav>
             <div className="flex items-center gap-3">
-              <Button variant="icon" size="icon">
+              <Button variant="icon" size="icon" aria-label={t("search")}>
                 <Search className="h-5 w-5" />
               </Button>
-              <Button variant="icon" size="icon">
+              <Button variant="icon" size="icon" aria-label={t("account")}>
                 <User className="h-5 w-5" />
               </Button>
 
@@ -100,6 +100,8 @@ export default function Header() {
                   variant="icon"
                   size="icon"
                   onClick={() => setIsLangOpen(!isLangOpen)}
+                  aria-label={t("language")}
+                  aria-expanded={isLangOpen}
                 >
                   <Globe className="h-5 w-5" />
                 </Button>
@@ -130,7 +132,12 @@ export default function Header() {
               </div>
 
               <div className="relative">
-                <Button variant="icon" size="icon" onClick={handleCartClick}>
+                <Button
+                  variant="icon"
+                  size="icon"
+                  onClick={handleCartClick}
+                  aria-label={`${t("cart")} (${totalItems} ${t("items")})`}
+                >
                   <ShoppingBag className="h-5 w-5" />
                   {totalItems > 0 && (
                     <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
