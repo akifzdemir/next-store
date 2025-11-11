@@ -25,10 +25,27 @@ export async function generateMetadata({
 }
 
 const getAllProducts = async (): Promise<ProductModel[]> => {
-  const res = await fetch(`${API_URL}/products`);
-  if (!res.ok) return [];
-  const data = (await res.json()) as ProductModel[];
-  return data;
+  try {
+    const res = await fetch(`${API_URL}/products`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) {
+      throw new Error(
+        `Failed to fetch products: ${res.status} ${res.statusText}`
+      );
+    }
+
+    const data = (await res.json()) as ProductModel[];
+    return data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
 };
 
 export default async function ProductsPage() {

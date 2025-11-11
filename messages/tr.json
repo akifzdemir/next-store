@@ -172,5 +172,20 @@
         "total": "Toplam",
         "items": "ürün",
         "viewCart": "Sepeti Görüntüle"
+    },
+    "ErrorPage": {
+        "title": "Bir şeyler yanlış gitti",
+        "description": "Bu sayfayı yüklerken bir hatayla karşılaştık. Lütfen tekrar deneyin.",
+        "tryAgain": "Tekrar Dene",
+        "goHome": "Ana Sayfaya Dön",
+        "goToProducts": "Ürünlere Git",
+        "productsError": {
+            "title": "Ürünler Yüklenemedi",
+            "description": "Ürünleri yükleyemedik. Bu bir ağ sorunu veya API'nin geçici olarak kullanılamıyor olmasından kaynaklanabilir."
+        },
+        "productError": {
+            "title": "Ürün Yüklenemedi",
+            "description": "Bu ürünü yükleyemedik. Ürün mevcut olmayabilir veya bir ağ hatası oluşmuş olabilir."
+        }
     }
 }

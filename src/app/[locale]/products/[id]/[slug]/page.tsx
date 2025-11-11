@@ -9,10 +9,30 @@ import { cache } from "react";
 import { getTranslations } from "next-intl/server";
 
 const getProduct = cache(async (id: string): Promise<ProductModel | null> => {
-  const res = await fetch(`${API_URL}/products/${id}`);
-  if (!res.ok) return null;
-  const data = (await res.json()) as ProductModel;
-  return data;
+  try {
+    const res = await fetch(`${API_URL}/products/${id}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) {
+      if (res.status === 404) {
+        return null;
+      }
+      throw new Error(
+        `Failed to fetch product: ${res.status} ${res.statusText}`
+      );
+    }
+
+    const data = (await res.json()) as ProductModel;
+    return data;
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    throw error;
+  }
 });
 
 export async function generateMetadata({

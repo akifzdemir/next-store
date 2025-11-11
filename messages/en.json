@@ -172,5 +172,20 @@
         "total": "Total",
         "items": "items",
         "viewCart": "View Cart"
+    },
+    "ErrorPage": {
+        "title": "Something went wrong",
+        "description": "We encountered an error while loading this page. Please try again.",
+        "tryAgain": "Try Again",
+        "goHome": "Go Home",
+        "goToProducts": "Go to Products",
+        "productsError": {
+            "title": "Failed to Load Products",
+            "description": "We couldn't load the products. This might be due to a network issue or the API is temporarily unavailable."
+        },
+        "productError": {
+            "title": "Failed to Load Product",
+            "description": "We couldn't load this product. It might not exist or there was a network error."
+        }
     }
 }
